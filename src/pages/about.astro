@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+
+export const frontmatter = {
+  title: 'A personal approach to building | VFC Construction',
+  description: 'Meet Vaildo Castro and discover the VFC Construction story, established in London in 2004.',
+  ogTitle: 'A personal approach to building | VFC Construction',
+  ogDescription: 'Meet Vaildo Castro and discover the VFC Construction story, established in London in 2004.',
+};
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  ogTitle={frontmatter.ogTitle}
+  ogDescription={frontmatter.ogDescription}
+  currentPage="about"
+>
+  <PageIntro
+    eyebrow="OUR STORY"
+    title="Good building starts<br />with good people."
+    lead="Since 2004, Vaildo “Vavá” Castro has helped clients turn an idea for their property into a practical, carefully finished space."
+  />
+
+  <section class="wrap split section about-story">
+    <div>
+      <img src="assets/images/loft.jpg" alt="Illustrative architectural interior with considered finishes" width="1200" height="900" loading="lazy" />
+      <p class="caption">Architectural reference image</p>
+    </div>
+    <div>
+      <p class="eyebrow">A WORD FROM OUR FOUNDER</p>
+      <h2>An honest guide.<br />A considered build.</h2>
+      <blockquote>“Clients know what they want the outcome to be, but don’t know how to get there.”</blockquote>
+      <p>Vaildo “Vavá” Castro · Founder & Managing Director</p>
+      <p>VFC began in 2004 with carpentry and building work in the UK. That foundation grew into residential refurbishments, extensions and complex commercial projects.</p>
+      <p>Materials, process and communication matter as much as the finished result. Our approach is to understand your priorities, explain the practical choices and keep the scope visible throughout the work.</p>
+    </div>
+  </section>
+
+  <section class="pale section">
+    <div class="wrap">
+      <p class="eyebrow">WHAT WE STAND FOR</p>
+      <h2>Trust is built in the details.</h2>
+      <div class="value-grid">
+        <article>
+          <h3>Transparency</h3>
+          <p>Know what is included, what is excluded and how changes will be agreed.</p>
+        </article>
+        <article>
+          <h3>Agreed stage payments</h3>
+          <p>Set out payment milestones in writing. Avoid paying the full contract value before work starts.</p>
+        </article>
+        <article>
+          <h3>The right expertise</h3>
+          <p>Discuss the competent specialist trades, insurance and certification relevant to your project.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <p class="eyebrow">EXPERIENCE THAT TRAVELS</p>
+    <h2>From Piccadilly to projects across the UK.</h2>
+    <div class="value-grid">
+      <article>
+        <h3>2004 — Our beginning</h3>
+        <p>Carpentry and building in the UK, with a focus on careful workmanship.</p>
+      </article>
+      <article>
+        <h3>Piccadilly Sports Café</h3>
+        <p>A commercial space delivered from scratch, as described in VFC’s company history.</p>
+      </article>
+      <article>
+        <h3>Six-city expansion</h3>
+        <p>Phantom of the Opera expansion work spanning Bristol, Newcastle, Liverpool, Birmingham, Leeds and Manchester.</p>
+      </article>
+    </div>
+    <p>Commercial work requires attention to the permissions, licensing conditions and stakeholder requirements that apply to each site. We discuss these responsibilities when defining your project.</p>
+  </section>
+
+  <section class="cta wrap">
+    <div>
+      <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+      <h2>Let’s build something<br />you’re proud of.</h2>
+    </div>
+    <div>
+      <p>Tell us what you have in mind.<br />We’ll help you find the way forward.</p>
+      <a class="button" href="/contact">Request a free survey <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+</BaseLayout>

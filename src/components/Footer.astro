@@ -1,0 +1,69 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = 'index' } = Astro.props;
+
+const navLinks = [
+  { href: '/about', label: 'About us' },
+  { href: '/services', label: 'Services' },
+  { href: '/gallery', label: 'Our work' },
+  { href: '/faq', label: 'Advice & FAQs' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const contactLinks = [
+  { href: 'tel:+447815710630', label: '07815 710630', icon: 'phone' },
+  { href: 'mailto:vava_london@hotmail.com', label: 'vava_london@hotmail.com', icon: 'mail' },
+  { href: 'https://www.instagram.com/vaildo_castro/', label: 'Instagram ↗', icon: 'instagram', target: '_blank', rel: 'noopener noreferrer' },
+];
+---
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/">
+        <img src="assets/images/LogoSVG-VFCConstruction.svg" width="45" height="46" alt="" />
+        <span>VFC<span class="brand-small">CONSTRUCTION</span></span>
+      </a>
+      <p>Built on trust.<br />Finished with precision.</p>
+      <p class="muted">London & Greater London<br />Residential & commercial • Since 2004</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      {navLinks.map(link => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+    <div>
+      <h3>Let’s talk</h3>
+      {contactLinks.map(link => (
+        <a href={link.href} target={link.target} rel={link.rel}>
+          {link.label}
+        </a>
+      ))}
+      <p>London time <time id="london-clock"></time></p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VFC Construction</span>
+    <div>
+      <button data-open="privacy">Privacy policy</button>
+      <button id="cookie-settings">Cookie preferences</button>
+    </div>
+    <div class="dev-credits">
+      <span class="dev-label">Website by</span>
+      <a href="mailto:wolflerpython@gmail.com?subject=Website%20Enquiry%20via%20VFC%20Construction" class="dev-name">Wolfler Guzzo Ferreira</a>
+      <span class="dev-role">Web Design & Development · Looking for a website?</span>
+      <div class="dev-contacts">
+        <a href="mailto:wolflerpython@gmail.com?subject=Website%20Enquiry%20via%20VFC%20Construction" class="dev-contact dev-email" aria-label="Email Wolfler">
+          <i data-lucide="mail" aria-hidden="true"></i> wolflerpython@gmail.com
+        </a>
+        <a href="https://wa.me/4477833565865?text=Hi%20Wolfler,%20I%20saw%20your%20work%20on%20the%20VFC%20Construction%20website.%20I%20would%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener noreferrer" class="dev-contact dev-whatsapp" aria-label="WhatsApp Wolfler">
+          <i data-lucide="message-circle" aria-hidden="true"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

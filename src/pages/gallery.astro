@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+
+export const frontmatter = {
+  title: 'Our work & project inspiration | VFC Construction',
+  description: 'Explore VFC’s project history and architectural reference imagery for extensions, kitchens, lofts and interiors.',
+  ogTitle: 'Our work & project inspiration | VFC Construction',
+  ogDescription: 'Explore VFC’s project history and architectural reference imagery for extensions, kitchens, lofts and interiors.',
+};
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  ogTitle={frontmatter.ogTitle}
+  ogDescription={frontmatter.ogDescription}
+  currentPage="gallery"
+>
+  <PageIntro
+    eyebrow="OUR WORK"
+    title="Thoughtful spaces.<br />Lasting possibilities."
+    lead="Explore the types of spaces we help create, alongside highlights from our commercial project history."
+  />
+
+  <section class="wrap gallery-section">
+    <div class="gallery-notice">Reference gallery: these licensed stock images illustrate styles and services. They are not photographs of VFC’s completed projects.</div>
+    <div class="filters" role="group" aria-label="Filter gallery">
+      <button data-filter="All" aria-pressed="true">All</button>
+      <button data-filter="Extensions" aria-pressed="false">Extensions</button>
+      <button data-filter="Kitchens & Bathrooms" aria-pressed="false">Kitchens & Bathrooms</button>
+      <button data-filter="Lofts" aria-pressed="false">Lofts</button>
+      <button data-filter="Flooring & Decorating" aria-pressed="false">Flooring & Decorating</button>
+      <button data-filter="Commercial" aria-pressed="false">Commercial</button>
+    </div>
+    <p id="gallery-count" class="caption" aria-live="polite">6 reference images</p>
+    <div class="gallery-grid">
+      <article class="gallery-card" data-category="Extensions">
+        <button class="image-open" data-image="assets/images/extension.jpg" data-caption="Space to gather — Extensions. Illustrative reference photography, not a VFC project." aria-label="Enlarge Space to gather">
+          <img src="assets/images/extension.jpg" alt="Extensions architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Extensions</p>
+        <h3>Space to gather</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+      <article class="gallery-card" data-category="Kitchens & Bathrooms">
+        <button class="image-open" data-image="assets/images/kitchen.jpg" data-caption="Everyday, elevated — Kitchens & Bathrooms. Illustrative reference photography, not a VFC project." aria-label="Enlarge Everyday, elevated">
+          <img src="assets/images/kitchen.jpg" alt="Kitchens & Bathrooms architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Kitchens & Bathrooms</p>
+        <h3>Everyday, elevated</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+      <article class="gallery-card" data-category="Lofts">
+        <button class="image-open" data-image="assets/images/loft.jpg" data-caption="A new perspective — Lofts. Illustrative reference photography, not a VFC project." aria-label="Enlarge A new perspective">
+          <img src="assets/images/loft.jpg" alt="Lofts architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Lofts</p>
+        <h3>A new perspective</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+      <article class="gallery-card" data-category="Flooring & Decorating">
+        <button class="image-open" data-image="assets/images/loft.jpg" data-caption="The finishing details — Flooring & Decorating. Illustrative reference photography, not a VFC project." aria-label="Enlarge The finishing details">
+          <img src="assets/images/loft.jpg" alt="Flooring & Decorating architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Flooring & Decorating</p>
+        <h3>The finishing details</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+      <article class="gallery-card" data-category="Commercial">
+        <button class="image-open" data-image="assets/images/extension.jpg" data-caption="Room for possibility — Commercial. Illustrative reference photography, not a VFC project." aria-label="Enlarge Room for possibility">
+          <img src="assets/images/extension.jpg" alt="Commercial architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Commercial</p>
+        <h3>Room for possibility</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+      <article class="gallery-card" data-category="Kitchens & Bathrooms">
+        <button class="image-open" data-image="assets/images/kitchen.jpg" data-caption="Considered from the start — Kitchens & Bathrooms. Illustrative reference photography, not a VFC project." aria-label="Enlarge Considered from the start">
+          <img src="assets/images/kitchen.jpg" alt="Kitchens & Bathrooms architectural reference" width="1200" height="900" loading="lazy" />
+          <span class="expand"><i data-lucide="expand" aria-hidden="true"></i></span>
+        </button>
+        <p class="eyebrow">Kitchens & Bathrooms</p>
+        <h3>Considered from the start</h3>
+        <span class="caption">Reference photography</span>
+      </article>
+    </div>
+  </section>
+  <section class="pale section">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">BEFORE & AFTER</p>
+        <h2>Imagine what<br />comes next.</h2>
+        <p>Explore the conceptual slider. Approved before-and-after project photographs will be added when available.</p>
+      </div>
+      <div>
+        <div class="comparison" style="--position:50%">
+          <div class="comparison-state after">
+            <span>AFTER · CONCEPT</span>
+            <img src="/assets/images/after.jpg" class="after" alt="after" />
+          </div>
+          <div class="comparison-state before">
+            <span>BEFORE · CONCEPT</span>
+            <img src="/assets/images/before.jpg" class="before" alt="before" />
+          </div>
+          <div class="comparison-line" aria-hidden="true">↔</div>
+          <input type="range" min="0" max="100" value="50" aria-label="Reveal conceptual before and after comparison" />
+        </div>
+        <p class="caption">Illustrative comparison only. Verified paired project photography is awaiting approval.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

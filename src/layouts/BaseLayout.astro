@@ -1,0 +1,158 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Notice from '../components/Notice.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import PrivacyDialog from '../components/PrivacyDialog.astro';
+import LightboxDialog from '../components/LightboxDialog.astro';
+import Toast from '../components/Toast.astro';
+
+// 1. IMPORTAÇÃO DO CSS: O Astro processa, minifica e injeta diretamente no HTML final
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  currentPage?: string;
+}
+
+const {
+  title = 'VFC Construction',
+  description = 'Residential and commercial construction, extensions and refurbishment across Greater London.',
+  canonical,
+  ogTitle = title,
+  ogDescription = description,
+  currentPage = 'index',
+} = Astro.props;
+
+// URL canônica derivada de `site` (astro.config.mjs). A prop `canonical` permite override manual se necessário.
+const siteURL = Astro.site ?? new URL('https://vfcconstruction.co.uk');
+const canonicalURL = canonical ? new URL(canonical, siteURL) : new URL(Astro.url.pathname, siteURL);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#6B1745" />
+
+    <!-- Favicon: barra no início garante acesso à pasta public/ -->
+    <link
+      rel="icon"
+      href="/assets/images/LogoSVG-VFCConstruction.svg"
+      type="image/svg+xml"
+    />
+
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Play CDN com Configuração -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: '#6B1745',
+              brandDark: '#581338',
+              brandLight: '#831D55',
+              charcoal: '#1E1E1E',
+              ink: '#121212',
+              slate: '#9E9E9E',
+              concrete: '#E5E7EB',
+              mist: '#F3F4F6',
+              surface: '#FFFFFF',
+              offwhite: '#F9FAFB',
+              night: '#0B0F17',
+              trust: '#15803D',
+              ochre: '#D97706',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-padding-top: 110px;
+      }
+      .page-intro h1 {
+        max-width: 900px;
+      }
+    </style>
+
+    <!-- Ícones Lucide -->
+    <script is:inline src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+    <noscript>
+      <style>
+        @media (max-width: 800px) {
+          .site-header nav {
+            display: flex;
+            position: static;
+            box-shadow: none;
+            max-height: none;
+            width: auto;
+            flex-wrap: wrap;
+            flex-direction: row;
+            padding: 10px;
+          }
+          .header-inner {
+            flex-wrap: wrap;
+          }
+          .menu-toggle {
+            display: none;
+          }
+          .filters,
+          .image-open .expand {
+            display: none;
+          }
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Notice />
+    <Header currentPage={currentPage} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer currentPage={currentPage} />
+    <WhatsAppButton />
+    <CookieBanner />
+    <PrivacyDialog />
+    <LightboxDialog />
+    <Toast />
+
+    <!-- 2. IMPORTAÇÃO DO JAVASCRIPT: Empacotado e otimizado pelo Astro -->
+    <script src="../scripts/scripts.js"></script>
+
+    <!-- Inicializa os ícones SVG do Lucide nos componentes -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = 'index' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About us' },
+  { href: '/services', label: 'Services' },
+  { href: '/gallery', label: 'Our work' },
+  { href: '/faq', label: 'Advice & FAQs' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="VFC Construction home">
+      <img src="assets/images/LogoSVG-VFCConstruction.svg" width="45" height="46" alt="" />
+      <span>VFC<span class="brand-small">CONSTRUCTION</span></span>
+    </a>
+    <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation">
+      <i data-lucide="menu" aria-hidden="true"></i>
+    </button>
+    <nav id="main-nav" aria-label="Main navigation">
+      {navLinks.map(link => (
+        <a href={link.href} aria-current={currentPage === link.href.replace('/', '') ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <a class="header-cta button" href="/contact">
+      Request a free survey <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</header>
