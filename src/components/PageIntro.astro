@@ -1,15 +1,15 @@
 ---
 interface Props {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  lead: string;
+  lead?: string;
 }
 
 const { eyebrow, title, lead } = Astro.props;
 ---
 
 <section class="page-intro wrap">
-  <p class="eyebrow">{eyebrow}</p>
-  <h1>{title}</h1>
-  <p class="lead">{lead}</p>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h1 set:html={title} />
+  {lead && <p class="lead" set:html={lead} />}
 </section>
